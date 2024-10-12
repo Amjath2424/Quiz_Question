@@ -5,7 +5,7 @@ import com.amju.quizapp.dao.QuizDao;
 import com.amju.quizapp.model.Question;
 import com.amju.quizapp.model.QuestionWrapper;
 import com.amju.quizapp.model.Quiz;
-import org.apache.catalina.connector.Response;
+import com.amju.quizapp.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,16 +53,19 @@ public class QuizService {
     }
 
     public ResponseEntity<Integer> calculateResult(Integer id, List<Response> reponses) {
+        System.out.println("scsc");
         Quiz quiz = quizDao.findById(id).get();
+
         List<Question> questions = quiz.getQuestions();
-        int right = 0;
+        Integer right = 0;
         int i = 0;
+
         for(Response response : reponses) {
             if (response.getResponse().equals(questions.get(i).getRight_answer()))
                 right++;
 
             i++;
         }
-        return new ResponseEntity<>(right, HttpStatus.OK);
+        return new ResponseEntity<Integer>(right, HttpStatus.OK);
     }
 }

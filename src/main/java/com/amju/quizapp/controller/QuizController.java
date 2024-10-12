@@ -1,9 +1,9 @@
 package com.amju.quizapp.controller;
 
 import com.amju.quizapp.model.QuestionWrapper;
+import com.amju.quizapp.model.Response;
 import com.amju.quizapp.service.QuizService;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
